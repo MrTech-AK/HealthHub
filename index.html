@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Hub</title>
+    <link rel="icon" type="image/png" href="https://eduverse-official.netlify.app/images/20250216_113226.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        body {
+            background: linear-gradient(180deg, #081c3d, #0c2c57);
+            color: white; text-align: center;
+            overflow-x: hidden;
+        }
+        #particles-js { position: absolute; width: 100%; height: 100vh; z-index: -1; }
+        .hero {
+            height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            position: relative; text-align: center; padding: 20px;
+        }
+        h1 {
+            font-size: 2.9rem; font-weight: 600;
+            background: linear-gradient(45deg, #00e5ff, #80d8ff);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(0, 229, 255, 0.7);
+            animation: glow 1.5s infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 10px rgba(0, 229, 255, 0.6); }
+            to { text-shadow: 0 0 25px rgba(0, 229, 255, 1); }
+        }
+        .tagline { font-size: 0.9rem; margin: 15px 0; opacity: 0.9; }
+        .description { font-size: 1.03rem; opacity: 0.85; margin-bottom: 25px; }
+        .buttons { margin-top: 20px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .btn {
+            display: inline-block; padding: 10px 23px;
+            font-size: 1.0rem; font-weight: bold; color: white; text-decoration: none;
+            border-radius: 50px; position: relative; overflow: hidden;
+            background: linear-gradient(135deg, #2196f3, #6ec6ff);
+            box-shadow: 0px 4px 15px rgba(0, 229, 255, 0.3);
+            transition: all 0.3s ease-in-out;
+        }
+        .btn::before {
+            content: ""; position: absolute; top: 50%; left: 50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 60%);
+            transform: translate(-50%, -50%);
+            transition: all 0.3s ease-in-out; opacity: 0;
+        }
+        .btn:hover::before { opacity: 1; width: 250%; height: 250%; }
+        .btn:hover { transform: scale(1.06); background: linear-gradient(135deg, #6ec6ff, #2196f3); }
+        .counter {
+            margin-top: 25px; font-size: 1.5rem; font-weight: bold;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .counter span {
+            font-size: 2rem; font-weight: bold; color: #ffeb3b;
+            animation: countUp 1.5s ease-in-out;
+        }
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .section {
+            padding: 100px 10%; text-align: center;
+            background: linear-gradient(180deg, #0c2c57, #081c3d);
+        }
+        .section h2 {
+            font-size: 2.5rem; margin-bottom: 15px;
+            color: #00e5ff; text-shadow: 0 0 10px rgba(0, 229, 255, 0.6);
+        }
+        .section p { font-size: 1.2rem; opacity: 0.85; }
+        .footer {
+            padding: 20px; background: #06142e;
+            font-size: 0.9rem; opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+
+    <!-- Site Starts-->
+    <section class="hero">
+        <h1>Health Hub</h1>
+        <p class="tagline"><br>
+            ✦ Physical Health✦ <br>
+            ✦ Mantal Health ✦ <br>
+            ✦ Yoga Aasaan ✦ <br>
+            ✦ Ai Doctor✦
+        </p><br>
+        <p class="description">
+            Your one-stop destination for Complete Fitness.
+        </p>
+        
+        <div class="buttons">
+            <a href="/main" class="btn"><i class="fa-solid fa-laptop"></i>Get Started</a>
+            <a href="/features" class="btn"><i class="fa fa-cog"></i> Features!</a>
+        </div><br>
+        
+    <!--   <div class="counter">
+            <span id="userCount">10k+</span> Connected Users
+        </div> -->
+    </section>
+
+    
+    <section class="section">
+        <h2>About Us</h2>
+      <p>At Health Hub, we believe that good health is the foundation of a happy and fulfilling life. Our mission is to empower individuals with reliable information, practical tips, and expert guidance on all things related to physical, mental, and emotional well-being.</p>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section">
+        <h2>Why Choose Us?</h2>
+<p>
+  ✔ Trusted Health Information<br>
+  ✔ Expert-Backed Wellness Tips<br>
+  ✔ Personalized Fitness & Diet Plans<br>
+  ✔ Mental Health Support Resources<br>
+  ✔ Easy-to-Follow Guides & Tools
+</p>
+  </section>
+
+
+    <footer class="footer">
+        &copy; 2025 Health Hub. All rights reserved.
+    </footer>
+
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 120, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#ffffff" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.6, "random": true },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": false },
+                "move": { "speed": 2.5, "direction": "none", "random": false, "straight": false }
+            }
+        });
+
+        // User Count Animation
+        function animateUserCount() {
+            let count = 0, finalCount = 10000;
+            let interval = setInterval(() => {
+                count += 50;
+                document.getElementById("userCount").innerText = count.toLocaleString() + "+";
+                if (count >= finalCount) clearInterval(interval);
+            }, 50);
+        }
+        setTimeout(animateUserCount, 800);
+    </script>
+
+    <script>
+  const manifest = {
+    "name": "Health Hub",
+    "short_name": "Health Hub",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#000000",
+    "icons": [
+      {
+        "src": "/images/20250216_113226.jpg",
+        "sizes": "192x192",
+        "type": "image/jpg"
+      },
+      {
+        "src": "/images/20250216_113226.jpg",
+        "sizes": "512x512",
+        "type": "image/jpg"
+      }
+    ]
+  };
+
+  const blob = new Blob([JSON.stringify(manifest)], { type: "application/json" });
+  const manifestURL = URL.createObjectURL(blob);
+  const link = document.createElement("link");
+  link.rel = "manifest";
+  link.href = manifestURL;
+  document.head.appendChild(link);
+    </script>
+
+    <script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("sw.js")
+      .then(() => console.log("Service Worker Registered"))
+      .catch((err) => console.log("Service Worker Failed", err));
+  }
+                              </script>
+    
+
+</body>
+</html>
