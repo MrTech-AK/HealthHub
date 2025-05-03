@@ -1,0 +1,423 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Hub.</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+	<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+	
+	<style>
+        /* Reset and Base Styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+/* Header */
+body {
+    padding-top: 0px; /* Remove extra space */
+}
+
+.main-content {
+    padding: 60px 20px 20px; /* Adjusted for fixed header */
+}
+        
+header {
+    background-color: #6495ED; /* Cornflower blue */
+    padding: 0.5rem 10px; /* Reduce padding for less thickness */
+    display: flex;
+    justify-content: space-between; /* Aligns title on the left, bell on the right */
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
+    height: 40px; /* Reduce height */
+    width: calc(100% - 20px); /* Leaves a little margin on the sides */
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    z-index: 1000;
+}
+
+.header-title {
+    font-size: 1.2em; /* Reduce font size */
+    font-weight: bold;
+    color: #f9f9f9;
+}
+
+    .notification-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: url('images/notification.jpg') no-repeat center center;
+      background-size: cover;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .notification-icon .notification-count {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background-color: red;
+      color: white;
+      font-size: 12px;
+      font-weight: bold;
+      border-radius: 50%;
+      padding: 2px 6px;
+      display: none; /* Hidden by default */
+    }
+
+    .container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      justify-content: center;
+      padding-top: 80px; /* Adjusted to fit the fixed header */
+    }
+
+    .notifications-dropdown {
+      display: none;
+      position: absolute;
+      top: 50px; /* Below the bell icon */
+      right: 0;
+      background-color: white;
+      color: black;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      width: 250px;
+      border-radius: 8px;
+      z-index: 1001;
+    }
+
+    .notifications-dropdown .notification {
+      padding: 10px;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 14px;
+    }
+
+    .notifications-dropdown .notification:last-child {
+      border-bottom: none;
+    }
+
+    .notifications-dropdown p {
+      margin: 10px;
+      text-align: center;
+        }
+
+
+        /* Main Content */
+        .main-content {
+            padding: 80px 20px 20px; /* Adjusted for fixed header */
+            text-align: center;
+        }
+
+        /* Batch Image */
+        .batch-image {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Batch Name */
+        .batch-name {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #333;
+            margin: 20px 0 30px;
+        }
+
+        /* Subjects Section */
+        .subjects-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* Subject Cards */
+/* Subject Cards */
+.subject-card {
+    text-decoration: none;
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    border: 1px solid #ddd;
+    border-radius: 15px; /* More rectangular shape */
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% - 40px); /* Full width with margin */
+    max-width: 600px; /* Optional limit for larger screens */
+    margin: 10px auto; /* Centered alignment */
+    height: auto; /* Automatic height for content */
+}
+
+/* Image inside the card */
+.subject-card img {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 10px;
+}
+
+/* Title styling */
+.subject-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Hover effects */
+.subject-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+        /* Footer */
+        footer {
+            margin-top: 40px;
+            background: #f1f1f1;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .subject-card {
+                width: 140px;
+                height: 160px;
+            }
+
+            .batch-name {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .subject-card {
+                width: 120px;
+                height: 140px;
+            }
+
+            .batch-name {
+                font-size: 1.5rem;
+            }
+        }
+        /* Container */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* Header Section */
+.header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.back-button {
+    font-size: 24px;
+    color: #333;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.back-button:hover {
+    color: #007bff;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Breadcrumb Section */
+.breadcrumb {
+    font-size: 14px;
+    color: #6495ED;
+    margin-bottom: 20px;
+}
+
+/* Board Grid Section */
+.board-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* Board Cards */
+
+		.board-card {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+
+/* Hover underline effect */
+.board-card::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    width: 50%;
+    height: 2px;
+    background-color: #007bff; /* Blue color */
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+}
+
+.board-card:hover::after {
+    transform: scaleX(1);
+}
+.board-card {
+    position: relative;
+    padding: 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    border-radius: 10px;
+}
+
+/* On hover, show blue border */
+.board-card:hover {
+    border: 2px solid #007bff; /* Blue border */
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.3); /* Optional glow */
+    background-color: rgba(0, 123, 255, 0.05); /* Optional light background effect */
+}
+
+		
+.board-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.board-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.board-card p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.board-card img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+a {
+            text-decoration: none; /* Removes underline */
+            color: rgb(255, 0, 0); /* Set link color */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    
+    <header>
+    <div class="header-title">Health Hub. </div>
+    <div class="notification-icon" onclick="toggleNotifications()">
+      <span class="notification-count" id="notification-count">0</span>
+      <div class="notifications-dropdown" id="notifications-dropdown">
+        <p>No new notifications</p>
+      </div>
+    </div>
+  </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Batch Image -->
+        <img src="https://ibb.co/DHxScMYQ" alt="Batch Image" class="batch-image"><br>
+        
+        <!-- Batch Name -->
+        <h1 class="batch-name">Select Below ꪜ</h1><br>
+        
+      
+        <div class="board-grid">
+
+
+           <a href="Physical-Health"> <div class="board-card">
+                <p>Physical Health</p>
+                <img src="https://cdn-icons-png.flaticon.com/256/7918/7918229.png" alt="">
+            </div></a>
+
+	       	<a href="Mental-Health"> <div class="board-card">
+                <p>Mental Health</p>
+                <img src="https://cdn-icons-png.flaticon.com/256/7918/7918229.png" alt="">
+            </div></a>
+
+           <a href="Yoga"> <div class="board-card">
+                <p>Yoga Aasaans</p>
+                <img src="https://cdn-icons-png.flaticon.com/256/7918/7918229.png" alt="">
+            </div></a>
+
+
+    </main>
+	
+	
+      <script>
+    function toggleNotifications() {
+      const dropdown = document.getElementById("notifications-dropdown");
+      dropdown.style.display =
+        dropdown.style.display === "block" ? "none" : "block";
+    }
+
+    function addNotification(message) {
+      const notificationCount = document.getElementById("notification-count");
+      const dropdown = document.getElementById("notifications-dropdown");
+
+      const currentCount = parseInt(notificationCount.textContent, 10);
+      notificationCount.textContent = currentCount + 1;
+      notificationCount.style.display = "inline-block";
+
+      const newNotification = document.createElement("div");
+      newNotification.className = "notification";
+      newNotification.textContent = message;
+
+      if (dropdown.querySelector("p")) {
+        dropdown.innerHTML = "";
+      }
+
+      dropdown.appendChild(newNotification);
+    }
+
+       setTimeout(() => addNotification("Welcome to Health Hub"), 1000);
+    </script>
+   
+</body>
+</html>
