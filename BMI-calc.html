@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/Favicon.png" />
+    <title>Body Mass Index Calculator</title>
+</head>
+<style>
+  @font-face {
+  font-family: 'inter-regular';
+  src: url('./assets/fonts/static/Inter-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'inter-semibold';
+  src: url('./assets/fonts/static/Inter-SemiBold.ttf') format('truetype');
+}
+
+:root {
+  --blue: #345ff6;
+  --gunmetal: #253347;
+  --dark-electric-blue: #5e6e85;
+  --borders: #d8e2e7;
+  --white: #fff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #fff;
+  font-family: 'inter-regular';
+  font-size: 16px;
+  line-height: 1.5;
+  max-width: 100vw;
+}
+
+h1 {
+  color: var(--gunmetal);
+  font-size: 48px;
+  letter-spacing: -2.4px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+h2 {
+  color: var(--gunmetal);
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 1.1;
+  letter-spacing: -1.6px;
+  margin-bottom: 32px;
+}
+
+h3 {
+  color: var(--gunmetal);
+  font-size: 24px;
+  letter-spacing: -1.2px;
+  font-weight: 600;
+  line-height: normal;
+}
+
+h4 {
+  color: var(--gunmetal);
+  font-size: 20px;
+  letter-spacing: -1px;
+  line-height: normal;
+}
+
+p {
+  color: var(--dark-electric-blue);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.container {
+  max-width: 686px;
+  margin: 0 auto;
+}
+
+.header {
+  padding: 32px 24px 72px 24px;
+  text-align: center;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 640px;
+  background: var(
+    --gradient-1,
+    linear-gradient(315deg, #d6e6fe 0%, rgba(214, 252, 254, 0) 100%)
+  );
+  border-radius: 35px;
+  z-index: -1;
+}
+
+.header h1 {
+  margin-block: 24px;
+}
+
+.header .logo {
+  width: 40px;
+  margin: 0 auto;
+}
+
+.header .container {
+  position: relative;
+}
+
+.bmi {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.calculator {
+  background: #fff;
+  margin-top: 48px;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 16px 32px 56px 0px rgba(143, 174, 207, 0.25);
+  text-align: left;
+  position: absolute;
+  width: 100%;
+  margin-bottom: 72px;
+}
+
+.calculator .units {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  font-weight: 600;
+}
+
+.calculator .units .form-control label {
+  font-weight: 600;
+}
+
+.calculator .imperial .form-control {
+  margin-bottom: 16px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 23px;
+  margin-bottom: 8px;
+}
+
+input[type='radio'] {
+  margin-right: 18px;
+  width: 31px;
+  height: 31px;
+  cursor: pointer;
+  border: 1px solid #d8e2e7;
+  border-radius: 50%;
+  appearance: none;
+}
+
+input[type='radio']:not(.active):hover {
+  border: 1px solid var(--blue);
+}
+
+input[type='radio'].active {
+  appearance: none;
+  height: 31px;
+  width: 31px;
+  border-radius: 50%;
+  background-color: hsla(227, 92%, 58%, 0.15);
+  position: relative;
+}
+
+input[type='radio'].active::after {
+  content: '';
+  width: 16px;
+  height: 16px;
+  background-color: var(--blue);
+  opacity: 1;
+  border-radius: 50%;
+  z-index: 100;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.units .form-control {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.form .infos label {
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.form .infos input {
+  width: 100%;
+  padding: 20px 24px;
+  border-radius: 12px;
+  border: 1px solid #d8e2e7;
+  font-size: 24px;
+}
+
+.form .infos input:focus {
+  outline: 0;
+  border: 1px solid var(--blue);
+}
+
+.form .infos .input-container {
+  position: relative;
+}
+
+.form .infos .input-container input::placeholder {
+  color: var(--dark-electric-blue);
+  opacity: 0.25;
+  font-weight: 600;
+}
+
+.form .unit-height,
+.form .unit-weight {
+  color: var(--blue);
+  font-weight: 600;
+  position: absolute;
+  top: 54%;
+  transform: translateY(-50%);
+  right: 24px;
+  font-size: 24px;
+  letter-spacing: -1.2px;
+}
+
+.metric {
+  display: block;
+}
+
+.metric.flex {
+  display: flex;
+}
+
+.metric.none {
+  display: none;
+}
+
+.form .metric .form-control label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--dark-electric-blue);
+}
+
+.imperial .container-flex {
+  display: flex;
+  gap: 24px;
+}
+
+.header .metric .form-control {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.imperial {
+  display: none;
+}
+
+.form .imperial .form-control label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--dark-electric-blue);
+}
+
+.imperial .form-control small {
+  color: var(--blue);
+  position: absolute;
+  right: 24px;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -1.2px;
+}
+
+.imperial .form-control .input-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.imperial .form-control .input-container input {
+  padding: 20px 24px;
+}
+
+.container-result {
+  background: linear-gradient(90deg, #345ff6 0%, #587dff 100%);
+  padding: 32px;
+  color: #fff;
+  border-radius: 16px;
+}
+
+.container-result .bmi {
+  flex-direction: column;
+  text-align: left;
+  align-items: flex-start;
+}
+
+
+.container-result .welcome-text h3 {
+  color: #fff;
+  margin-bottom: 16px;
+  line-height: normal;
+}
+
+.container-result > * {
+  color: #fff;
+}
+
+.container-result p {
+  color: #fff;
+  font-size: 14px;
+}
+
+.container-result #min-weight, 
+.container-result #max-weight {
+  color: #fff;
+  font-weight: 700;
+}
+
+.container-result .result {
+  font-size: 48px;
+  line-height: 1.1;
+  margin-block: 8px 24px;
+  text-align: left;
+}
+
+.container-result .result-heading {
+  font-size: 16px;
+}
+
+.container-result .result-heading .result {
+  font-size: 48px;
+}
+
+.container-result > p {
+  font-size: 14px;
+}
+
+/* Explanation */
+
+.explanation {
+  width: 100%;
+  margin: 0 auto;
+  padding-inline: 24px;
+  margin-bottom: 127.5px;
+  margin-top: 657px;
+}
+
+.explanation .curve-left {
+  display: none;
+}
+
+.explanation h2 {
+  margin-block: 48px 32px;
+}
+
+/* Habits */
+
+.positive-habits {
+  background: var(
+    --gradient-1,
+    linear-gradient(
+      315deg,
+      rgba(214, 230, 254, 0.25) 0%,
+      rgba(214, 252, 254, 0) 100%
+    )
+  );
+  margin: 0 auto;
+  padding-inline: 20px 29px;
+  padding-bottom: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-bottom: 72px;
+}
+
+.positive-habits img {
+  margin-bottom: 32px;
+}
+
+.positive-habits h3 {
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+/* Limitations */
+
+.limitations {
+  padding-inline: 24px;
+  margin-bottom: 96px;
+}
+
+.limitations .curve {
+  display: none;
+  position: absolute;
+}
+
+.limitations-content {
+  text-align: center;
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 16px 32px 56px 0px rgba(143, 174, 207, 0.25);
+}
+
+.card-heading {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 56px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 1000px;
+  }
+
+  .header {
+    padding: 32px 43px 72px 39px;
+  }
+
+  .header .calculator {
+    padding: 32px;
+    margin-top: 40px;
+  }
+
+  .header .container-result {
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    padding: 32px;
+  }
+
+  .header .result-heading {
+    max-width: 436px;
+  }
+
+  .header .container-result .result-heading {
+    width: 50%;
+  }
+
+  .header .container-result .result-text {
+    width: 50%;
+    text-align: left;
+  }
+
+  .header .container-result .result-text p {
+    max-width: 276px;
+  }
+
+  .header .form {
+    margin-bottom: 16px;
+  }
+
+  .header .container-result .result {
+    font-size: 64px;
+    margin: 0;
+    margin-top: 8px;
+    font-weight: 600;
+    line-height: 1.1;
+  }
+
+  .header .container-result .bmi {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .header .metric {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .metric.flex {
+    display: flex;
+  }
+
+  .header .imperiall .form-control {
+    width: 100%;
+  }
+
+  .explanation {
+    display: flex;
+    align-items: center;
+    padding-inline: 39px 43px;
+    margin-top: 531px;
+  }
+
+  .explanation .image {
+    min-width: 361px;
+    max-width: 564px;
+    height: 411px;
+    align-self: flex-end;
+    transform: translateX(-75px);
+  }
+
+  .explanation img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .explanation .content {
+    width: 50%;
+    min-width: 331px;
+    max-width: 465px;
+    justify-self: center;
+  }
+
+  /* Habits */
+
+  .positive-habits {
+    padding-inline: 39px 43px;
+    border-radius: 16px;
+  }
+
+  .positive-habits > div {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .positive-habits img {
+    margin-bottom: 0px;
+  }
+
+  /* Limitations */
+
+  .limitations {
+    padding: 39px 43px;
+  }
+
+  .limitations-content {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .limitations .cards {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .card {
+    max-width: 336px;
+    padding: 32px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1392px;
+  }
+
+  .content h1 {
+    font-size: 64px;
+    letter-spacing: -3.2px;
+    margin-block: 35px;
+  }
+
+  h2 {
+    font-size: 48px;
+  }
+
+  .header {
+    padding-block: 75px 0;
+    padding-inline: 116px;
+  }
+
+  .header .logo {
+    width: 64px;
+    margin: 0;
+    margin-bottom: 131px;
+  }
+
+  .header .content {
+    max-width: 465px;
+  }
+
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 24px;
+    width: 60%;
+    min-width: 978px;
+    height: 737px;
+    background: var(
+      --gradient-1,
+      linear-gradient(315deg, #d6e6fe 0%, rgba(214, 252, 254, 0) 100%)
+    );
+
+    border-radius: 35px;
+    z-index: -1;
+  }
+
+  .header .container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    text-align: left;
+    gap: 131px;
+    margin: 0;
+  }
+
+  .header .form {
+    gap: 32px;
+    margin-bottom: 16px;
+  }
+  .container-result .result-heading {
+    font-size: 16px;
+  }
+
+  .form .infos .form-control:first-of-type {
+    margin: 0;
+  }
+
+  .form .infos .imperial .form-control:first-of-type {
+    margin: 0;
+    margin-bottom: 24px;
+  }
+
+  #welcome {
+    font-size: 14px;
+  }
+
+  .header .calculator {
+    width: 564px;
+    margin-top: 106px;
+    top: 92px;
+    left: 51.23%;
+    margin: 0;
+  }
+
+  .explanation {
+    justify-content: space-between;
+    gap: 131px;
+    padding-inline: 116px;
+    position: relative;
+    margin: 0;
+    margin-top: 265px;
+  }
+
+  .explanation .curve-left {
+    display: block;
+    position: absolute;
+    width: 85px;
+    height: 200px;
+    top: -32px;
+    right: 143px;
+  }
+
+  .explanation .content {
+    margin-top: 85px;
+  }
+
+  .explanation h2 {
+    margin-top: 56px;
+  }
+
+  .explanation .image {
+    transform: translate(0);
+    height: 533px;
+    width: 564px;
+  }
+
+  .positive-habits {
+    flex-direction: row;
+    margin-bottom: 120px;
+    padding: 72px 116px 96px 116px;
+    max-width: 1392px;
+    margin: 96px auto 120px auto;
+    border-radius: 35px;
+    gap: 32px;
+  }
+
+  .positive-habits > div {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 45px;
+    width: 365px;
+  }
+
+  .limitations {
+    text-align: left;
+    position: relative;
+    margin: 70px 0;
+    padding-block: 0;
+    padding-inline: 116px;
+  }
+
+  .limitations .curve {
+    display: block;
+    position: absolute;
+    width: 94px;
+    height: 122px;
+    top: 251px;
+    left: 281px;
+  }
+
+  .limitations-content {
+    text-align: left;
+    margin: 0;
+    margin-bottom: 60px;
+    width: 564px;
+  }
+
+  .limitations .cards {
+    margin-top: 80px;
+    justify-content: flex-end;
+    gap: 24px;
+    padding-left: 32px;
+  }
+
+  .card {
+    max-width: 365px;
+  }
+
+  .card.gender {
+    position: absolute;
+    top: 0;
+    right: 215px;
+    /* left: 796px; */
+    height: 232px;
+  }
+
+  .card.age {
+    height: 184px;
+    z-index: 1;
+  }
+
+  .card.muscle {
+    height: 184px;
+    z-index: 1;
+    margin-left: 8px;
+  }
+
+  .card.pregnancy {
+    transform: translateX(-206px);
+    z-index: 1;
+    height: 232px;
+  }
+
+  .card.race {
+    transform: translate(-199px);
+    z-index: 1;
+    height: 232px;
+  }
+  }
+</style>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="container">
+        <div class="content">
+          <div class="logo"><img src="assets/images/logo.svg" alt="" /></div>
+          <h1>Body Mass Index Calculator</h1>
+          <p>
+            Better understand your weight in relation to your height using our
+            body mass index (BM) calculator. While BMI is not the sole
+            determinant of a healthy weight, it offers a valuable starting point
+            to evaluate your overall health and well-being.
+          </p>
+        </div>
+        <div class="calculator">
+          <div class="form" id="form">
+            <h3>Enter your details below</h3>
+            <div class="units">
+              <div class="form-control">
+                <input type="radio" name="input" value="metric" id="metric" class="radio active" checked />
+                <label for="metric">Metric</label>
+              </div>
+              <div class="form-control">
+                <input type="radio" name="input" value="imperial" id="imperial" class="radio" />
+                <label for="imperial">Imperial</label>
+              </div>
+            </div>
+            <div class="infos">
+              <div class="metric">
+                <div class="form-control">
+                  <label for="height">Height</label>
+                  <div class="input-container">
+                    <input type="number" id="height" placeholder="0" />
+                    <span class="unit-height" id="unit-height">cm</span>
+                  </div>
+                </div>
+                <div class="form-control">
+                  <label for="weight">Weight</label>
+                  <div class="input-container">
+                    <input type="number" id="weight" placeholder="0" />
+                    <span class="unit-weight" id="unit-weight">kg</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="imperial">
+                <div class="form-control">
+                  <label for="height">Height</label>
+                  <div class="container-flex">
+                    <div class="input-container">
+                      <input type="number" id="feet" class="feet" placeholder="0">
+                      <small>ft</small>
+                    </div>
+                    <div class="input-container">
+                      <input type="number" id="inch" class="inch" placeholder="0">
+                      <small>in</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-control">
+                  <label for="weight">Weight</label>
+                  <div class="container-flex">
+                    <div class="input-container">
+                      <input type="number" id="st" class="st" placeholder="0">
+                      <small>st</small>
+                    </div>
+                    <div class="input-container">
+                      <input type="number" id="lbs" class="lbs" placeholder="0">
+                      <small>lbs</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="container-result" id="container-result">
+            <div class="bmi" id="bmi">
+              <div class="result-heading" id="result-heading">
+                <p>Your BMI is...</p>
+                <div class="result" id="result">23.4</div>
+              </div>
+              <div class="result-text">
+                <p>Your BMI suggests you're <span id="classification"></span>. Your ideal weight is between . <span
+                    id="min-weight"></span> - <span id="max-weight"></span> please Go to Gym</span></p>
+              </div>
+            </div>
+            <div class="welcome-text" id="welcome">
+              <h3>Welcome!</h3>
+              <p>Enter your height and weight and you’ll see your BMI result here</p>
+            </div>
+            </p>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <!-- Section explanation -->
+      <section class="explanation">
+        <img src="assets/images/pattern-curved-line-left.svg" alt="curve" class="curve-left">
+        <div class="image">
+          <img src="assets/images/full-body-workout.jpg" alt="man-eating" />
+        </div>
+        <div class="content">
+          <h2>What your BMI result means</h2>
+          <p>
+            A BMI range of 18.5 to 24.9 is considered a 'healthy weight.'
+            Maintaining a healthy weight may lower your chances of experiencing
+            health issues later on, such as obesity and type 2 diabetes. Aim for
+            a nutritious diet with reduced fat and sugar content, incorporating
+            ample fruits and vegetables. Additionally, strive for regular
+            physical activity, ideally about 30 minutes daily for five days a
+            week.
+          </p>
+        </div>
+      </section>
+      <!-- Section Habits -->
+      <section class="positive-habits">
+        <div>
+          <img src="assets/images/icon-eating.svg" alt="eating" />
+          <div>
+            <h3>Healthy Eating</h3>
+            <p>
+              Healthy eating promotes weight control, disease prevention, better
+              digestion, immunity, mental clarity, and mood.
+            </p>
+          </div>
+        </div>
+        <div>
+          <img src="assets/images/icon-exercise.svg" alt="exercise" />
+          <div>
+            <h3>Regular exercise</h3>
+            <p>
+              Exercise improves fitness, aids weight control, elevates mood, and
+              reduces disease risk, fostering wellness and longevity.
+            </p>
+          </div>
+        </div>
+        <div>
+          <img src="assets/images/icon-sleep.svg" alt="sleep" />
+          <div>
+            <h3>Adequate sleep</h3>
+            <p>
+              Sleep enhances mental clarity, emotional stability, and physical
+              wellness, promoting overall restoration and rejuvenation.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- Section Limitations -->
+      <section class="limitations">
+        <img src="assets/images/pattern-curved-line-right.svg" alt="curve" class="curve">
+        <div class="limitations-content">
+          <h2>Limitations of BMI</h2>
+          <p>
+            Although BMI is often a practical indicator of healthy weight, it is
+            not suited for every person. Specific groups should carefully consider
+            their BMI outcomes, and in certain cases, the measurement may not be
+            beneficial to use.
+          </p>
+        </div>
+        <div class="cards">
+          <div class="card gender">
+            <div class="card-heading">
+              <img src="assets/images/icon-gender.svg" alt="" />
+              <h4>Gender</h4>
+            </div>
+            <p>
+              The development and body fat composition of girls and boys vary
+              with age. Consequently, a child's age and gender are considered
+              when evaluating their BMI.
+            </p>
+          </div>
+          <div class="card age">
+            <div class="card-heading">
+              <img src="assets/images/icon-age.svg" alt="" />
+              <h4>Age</h4>
+            </div>
+            <p>
+              In aging individuals, increased body fat and muscle loss may cause
+              BMI to underestimate body fat content.
+            </p>
+          </div>
+          <div class="card muscle">
+            <div class="card-heading">
+              <img src="assets/images/icon-muscle.svg" alt="" />
+              <h4>Muscle</h4>
+            </div>
+            <p>
+              BMI may misclassify muscular individuals as overweight or obese,
+              as it doesn't differentiate muscle from fat.
+            </p>
+          </div>
+          <div class="card pregnancy">
+            <div class="card-heading">
+              <img src="assets/images/icon-pregnancy.svg" alt="" />
+              <h4>Pregnancy</h4>
+            </div>
+            <p>
+              Expectant mothers experience weight gain due to their growing
+              baby. Maintaining a healthy pre-pregnancy BMI is advisable to
+              minimise health risks for both mother and child.
+            </p>
+          </div>
+          <div class="card race">
+            <div class="card-heading">
+              <img src="assets/images/icon-race.svg" alt="" />
+              <h4>Race</h4>
+            </div>
+            <p>
+              Certain health concerns may affect individuals of some Black and
+              Asian origins at lower BMIs than others. To learn more, it is
+              advised to discuss this with your GP or practice nurse.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <footer>
+    <center><small>
+        <p>&copy;
+          <script>document.write(new Date().getFullYear())</script> ©️ Health Hub 2025
+        </p>
+      </small>
+    </center>
+  </footer>
+  
+  <script>
+const form = document.getElementById('form');
+const heightEl = document.getElementById('height');
+const weightEl = document.getElementById('weight');
+const feetEl = document.getElementById('feet');
+const inchEl = document.getElementById('inch');
+const stEl = document.getElementById('st');
+const lbsEl = document.getElementById('lbs');
+const classification = document.getElementById('classification');
+const minWeight = document.getElementById('min-weight');
+const maxWeight = document.getElementById('max-weight');
+const resultEl = document.getElementById('result');
+const containerResult = document.getElementById('container-result');
+const bmiEl = document.getElementById('bmi');
+const welcome = document.getElementById('welcome');
+
+const metricBtn = document.getElementById('metric');
+const imperialBtn = document.getElementById('imperial');
+
+function calculateBMI(e) {
+  console.log(metricBtn.classList);
+  if (metricBtn.classList.contains('active')) {
+    const height = heightEl.value;
+    const weight = weightEl.value;
+
+    bmiEl.style.display = 'flex';
+    welcome.style.display = 'none';
+
+    const bmi = ((weight / (height * height)) * 10000).toFixed(1);
+
+    console.log(height);
+    console.log(weight);
+    console.log(bmi);
+
+    const heightM = height / 100;
+    console.log(heightM);
+
+    const min = (18.5 * heightM * heightM).toFixed(1);
+    const max = (24.9 * heightM * heightM).toFixed(1);
+
+    resultEl.innerText = bmi;
+
+    minWeight.innerText = `${min}kgs`;
+    maxWeight.innerText = `${max}kgs`;
+
+    if (bmi < 18.5) {
+      classification.innerText = 'Underweight';
+    } else if (bmi >= 18.5 && bmi <= 24.9) {
+      classification.innerText = 'Healthy weight';
+    } else if (bmi > 24.9 && bmi <= 29.9) {
+      classification.innerText = 'Overweight';
+    } else {
+      classification.innerText = 'Obese';
+    }
+
+    console.log('test');
+  } else {
+    const feet = parseInt(feetEl.value);
+    const inch = parseInt(inchEl.value);
+    const st = parseInt(stEl.value);
+    const lbs = parseInt(lbsEl.value);
+
+    bmiEl.style.display = 'flex';
+    welcome.style.display = 'none';
+
+    const heightInInches = feet * 12 + parseInt(inch);
+    const weightInPounds = st * 14 + lbs;
+    const bmi = (
+      (703 * weightInPounds) /
+      (heightInInches * heightInInches)
+    ).toFixed(1);
+    console.log(bmi);
+
+    resultEl.innerText = bmi
+    const minOptimalWeightPounds =
+      (18.5 * (heightInInches * heightInInches)) / 703;
+    const maxOptimalWeightPounds =
+      (24.9 * (heightInInches * heightInInches)) / 703;
+
+    const minWeightInStone = Math.floor(minOptimalWeightPounds / 14);
+    const minWeightInPounds = Math.round(minOptimalWeightPounds % 14);
+
+    const maxWeightInStone = Math.floor(maxOptimalWeightPounds / 14);
+    const maxWeightInPounds = Math.round(maxOptimalWeightPounds % 14);
+
+    // Convert optimal weight to a single value in stones and pounds
+    const optimalWeightValueInStone = Math.floor(
+      (minOptimalWeightPounds + maxOptimalWeightPounds) / 2 / 14
+    );
+    const optimalWeightValueInPounds = Math.round(
+      ((minOptimalWeightPounds + maxOptimalWeightPounds) / 2) % 14
+    );
+
+    minWeight.innerText = `${minWeightInStone}st ${minWeightInPounds}lbs`
+    maxWeight.innerText = `${maxWeightInStone}st ${maxWeightInPounds}lbs`
+
+    if (bmi < 18.5) {
+      classification.innerText = 'Underweight';
+    } else if (bmi >= 18.5 && bmi <= 24.9) {
+      classification.innerText = 'Healthy weight';
+    } else if (bmi > 24.9 && bmi <= 29.9) {
+      classification.innerText = 'Overweight';
+    } else {
+      classification.innerText = 'Obese';
+    }
+  }
+}
+
+// Limit input of height and length
+function limitLength() {
+  if (heightEl.value.length > 3 || weightEl.value.length > 3) {
+    heightEl.value = heightEl.value.slice(0, 3);
+    weightEl.value = weightEl.value.slice(0, 3);
+  } else if (feetEl.value.length > 1) {
+    feetEl.value = feetEl.value.slice(0, 1)
+  } else if (inchEl.value.length > 2 || lbsEl.value.length > 2 || stEl.value.length > 2) {
+    inchEl.value = inchEl.value.slice(0, 2)
+    lbsEl.value = lbsEl.value.slice(0, 2)
+    stEl.value = stEl.value.slice(0, 2)
+    }
+}
+
+// Add Eventlistener
+form.addEventListener('keydown', (e) => {
+  if (
+    (e.key === 'Enter' && heightEl.value !== '' && weightEl.value !== '') ||
+    (e.key === 'Enter' &&
+      feetEl.value !== '' &&
+      ((inchEl.value !== '') !== stEl.value) !== '' &&
+      lbsEl.value !== '')
+  ) {
+    e.preventDefault();
+    calculateBMI();
+  }
+});
+
+// Limit input
+heightEl.addEventListener('input', limitLength);
+weightEl.addEventListener('input', limitLength);
+feetEl.addEventListener('input', limitLength)
+inchEl.addEventListener('input', limitLength)
+lbsEl.addEventListener('input', limitLength)
+stEl.addEventListener('input', limitLength)
+
+// Change radio button
+const radioButtons = document.querySelectorAll('input[type="radio"]');
+
+radioButtons.forEach((btn) => {
+  btn.addEventListener('click', (e) => {
+    console.log(e.target);
+    if (e.target.value === 'imperial') {
+      document.querySelector('.metric').style.display = 'none';
+      document.querySelector('.imperial').style.display = 'block';
+      e.target.classList.add('active');
+      console.log(metricBtn);
+      metricBtn.classList.remove('active');
+    } else {
+      document.querySelector('.metric').style.display = window.innerWidth < 768 ? 'block' : 'flex';
+      document.querySelector('.imperial').style.display = 'none';
+      imperialBtn.classList.remove('active');
+      e.target.classList.add('active');
+    }
+  });
+});
+
+// Window rezise event
+window.addEventListener('resize', e=> {
+  if(window.innerWidth < 768) {
+    document.querySelector('.metric').style.display = 'block'
+  } else {
+    document.querySelector('.metric').style.display = 'flex'
+  }
+})
+  </script>
+</body>
+
+</html>
