@@ -1,259 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Feedback EduVerse</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join Our Health Campaign</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-  <style>
-    /* Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #1e3c72;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #ffffff;
-      overflow: hidden;
-    }
-
-    #particles-js {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
-
-    .contact-form-container {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 15px;
-      padding: 30px;
-      width: 100%;
-      max-width: 400px;
-      box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(10px);
-      text-align: center;
-    }
-
-    .contact-form-container h2 {
-      margin-bottom: 20px;
-      font-size: 28px;
-      font-weight: 600;
-      color: #ffffff;
-    }
-
-    .contact-form-container input,
-    .contact-form-container textarea,
-    .contact-form-container button {
-      width: 100%;
-      padding: 12px 15px;
-      margin-bottom: 15px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.15);
-      color: #ffffff;
-      font-size: 14px;
-      outline: none;
-    }
-
-    .contact-form-container input::placeholder,
-    .contact-form-container textarea::placeholder {
-      color: rgba(255, 255, 255, 0.7);
-    }
-
-    .contact-form-container textarea {
-      resize: none;
-      height: 100px;
-    }
-
-    .contact-form-container button {
-      background: #66d3fa;
-      color: #ffffff;
-      font-size: 16px;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-    }
-
-    footer {
-      position: absolute;
-      bottom: 10px;
-      text-align: center;
-      width: 100%;
-      color: #ffffff;
-      font-size: 14px;
-    }
-
-    footer a {
-      color: #66d3fa;
-      text-decoration: none;
-    }
-  </style>
 </head>
-<body>
-  <div id="particles-js"></div>
+<body class="bg-blue-50 min-h-screen flex items-center justify-center relative">
 
-  <div class="contact-form-container">
-    <h2>EduVerse ~ FeedBack</h2>
-    <form id="contact-form">
+  <!-- Background Particles -->
+  <div id="particles-js" class="absolute inset-0 -z-10"></div>
+
+  <!-- Form Container -->
+  <div class="bg-white rounded-xl shadow-lg p-8 w-full max-w-md">
+    <h2 class="text-2xl text-blue-600 font-semibold text-center mb-6">💙 Join Our Health Campaign</h2>
+
+    <form id="contact-form" class="space-y-4">
       <input type="hidden" name="command" value="/start" />
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="text" name="state_country" placeholder="State & Country" required />
-      <input type="text" name="telegram" placeholder="Telegram Username" required />
-      <input type="text" name="phone" placeholder="Rate Us from (5 ⭐)" required />
-      <textarea name="message" placeholder="Your Valuable Feedback" required></textarea>
-      <button type="submit">Send Message</button>
+
+      <div class="flex items-center border border-blue-200 rounded-lg px-3 py-2">
+        <i class="fas fa-user text-blue-400 mr-2"></i>
+        <input type="text" name="name" required placeholder="Full Name"
+          class="flex-1 bg-transparent outline-none text-gray-700 placeholder-gray-400" />
+      </div>
+
+      <div class="flex items-center border border-blue-200 rounded-lg px-3 py-2">
+        <i class="fas fa-map-marker-alt text-blue-400 mr-2"></i>
+        <input type="text" name="state_country" required placeholder="State, Country"
+          class="flex-1 bg-transparent outline-none text-gray-700 placeholder-gray-400" />
+      </div>
+
+      <div class="flex items-center border border-blue-200 rounded-lg px-3 py-2">
+        <i class="fab fa-telegram-plane text-blue-400 mr-2"></i>
+        <input type="text" name="telegram" required placeholder="@TelegramUsername"
+          class="flex-1 bg-transparent outline-none text-gray-700 placeholder-gray-400" />
+      </div>
+
+      <div class="flex items-center border border-blue-200 rounded-lg px-3 py-2">
+        <i class="fas fa-star text-blue-400 mr-2"></i>
+        <input type="text" name="phone" placeholder="Rate Us (out of 5)"
+          class="flex-1 bg-transparent outline-none text-gray-700 placeholder-gray-400" />
+      </div>
+
+      <div class="flex items-start border border-blue-200 rounded-lg px-3 py-2">
+        <i class="fas fa-comment text-blue-400 mt-2 mr-2"></i>
+        <textarea name="message" required placeholder="Your feedback..."
+          class="flex-1 bg-transparent outline-none text-gray-700 placeholder-gray-400 resize-none h-24"></textarea>
+      </div>
+
+      <button type="submit"
+        class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition">
+        Submit
+      </button>
     </form>
   </div>
 
-  <footer>
-    Made with ❤ by <a href="https://t.me/Akki_IzPro" target="_blank">@Akki_IzPro</a>
+  <footer class="absolute bottom-4 w-full text-center text-sm text-gray-500">
+    Made with ❤️ by <a href="https://t.me/Akki_IzPro" target="_blank" class="text-blue-600 hover:underline">@Akki_IzPro</a>
   </footer>
 
+  <!-- Particles js -->
   <script>
-    /* Particles.js Config */
     particlesJS("particles-js", {
       particles: {
-        number: { value: 100, density: { enable: true, value_area: 800 } },
-        color: { value: "#ffffff" },
+        number: { value: 70, density: { enable: true, value_area: 800 } },
+        color: { value: "#a0c4ff" },
         shape: { type: "circle" },
-        opacity: { value: 0.4 },
+        opacity: { value: 0.5 },
         size: { value: 3, random: true },
-        line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.4, width: 1 },
-        move: { enable: true, speed: 2 },
+        line_linked: { enable: true, distance: 120, color: "#a0c4ff", opacity: 0.4, width: 1 },
+        move: { enable: true, speed: 2 }
       },
       interactivity: {
         events: {
           onhover: { enable: true, mode: "grab" },
-          onclick: { enable: true, mode: "push" },
+          onclick: { enable: true, mode: "push" }
         },
         modes: {
-          grab: { distance: 150, line_linked: { opacity: 0.5 } },
-          push: { particles_nb: 4 },
-        },
+          grab: { distance: 140, line_linked: { opacity: 0.5 } },
+          push: { particles_nb: 4 }
+        }
       },
-      retina_detect: true,
+      retina_detect: true
     });
+  </script>
 
-    /* Form Submission */
+  <!-- Form Logic + Ticket ID Popup -->
+  <script>
     const form = document.getElementById("contact-form");
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-  const formData = {
-    name: form.name.value,
-    state_country: form.state_country.value, 
-    telegram: form.telegram.value,
-    phone: form.phone.value || "Not Provided",
-    message: form.message.value,
-  };
+      const formData = {
+        name: form.name.value,
+        state_country: form.state_country.value,
+        telegram: form.telegram.value,
+        phone: form.phone.value || "Not Provided",
+        message: form.message.value,
+      };
 
-  const response = await fetch("/.netlify/functions/sendMessage", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(formData),
-  });
+      try {
+        const res = await fetch("/.netlify/functions/sendMessage", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        });
+        const result = await res.json();
 
-  const result = await response.json();
+        if (res.ok && result.success) {
+          const popup = document.createElement("div");
+          popup.className = "fixed inset-0 flex items-center justify-center bg-black/30 z-50";
+          popup.innerHTML = `
+            <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-sm text-center">
+              <h3 class="text-blue-600 text-xl font-semibold mb-2">🎉 Thank You!</h3>
+              <p class="text-gray-700 mb-4">Your Ticket ID: <strong>${result.ticketID}</strong></p>
+              <button id="copy-btn" class="mt-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded">Copy ID</button>
+            </div>`;
+          document.body.appendChild(popup);
 
-  if (response.ok && result.success) {
-    // Create the blue-themed dialog box
-    const dialogBox = document.createElement("div");
-    dialogBox.style.position = "fixed";
-    dialogBox.style.top = "50%";
-    dialogBox.style.left = "50%";
-    dialogBox.style.transform = "translate(-50%, -50%)";
-    dialogBox.style.padding = "20px";
-    dialogBox.style.border = "2px solid #0047ab";
-    dialogBox.style.borderRadius = "10px";
-    dialogBox.style.backgroundColor = "#e6f2ff";
-    dialogBox.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.3)";
-    dialogBox.style.zIndex = "1000";
-    dialogBox.style.textAlign = "center";
-    dialogBox.style.width = "80%";
-    dialogBox.style.maxWidth = "400px";
+          document.getElementById("copy-btn").onclick = () => {
+            navigator.clipboard.writeText(result.ticketID).then(() => {
+              popup.remove();
+            });
+          };
 
-    dialogBox.innerHTML = `
-      <h3 style="color: #0047ab; margin-bottom: 10px;">Message Sent Successfully!</h3>
-      <p style="font-size: 16px; color: #003366; margin-bottom: 20px;">
-        🎫 <strong>Your Ticket ID:</strong> <span style="color: #0047ab;">${result.ticketID}</span>
-        <br>Thank you for your Feedback!
-      </p>
-      <button id="copyTicket" style="
-        padding: 10px 20px; 
-        background-color: #0047ab; 
-        color: #fff; 
-        border: none; 
-        border-radius: 5px; 
-        cursor: pointer;
-        font-size: 14px;
-      ">Copy Ticket ID</button>
-    `;
-
-    // Add the dialog box to the document
-    document.body.appendChild(dialogBox);
-
-    // Add functionality to copy the ticket ID and close the dialog box
-    const copyButton = document.getElementById("copyTicket");
-    copyButton.addEventListener("click", () => {
-      navigator.clipboard.writeText(result.ticketID).then(() => {
-        document.body.removeChild(dialogBox);
-      });
+          form.reset();
+        } else {
+          alert(`Error: ${result.error || "Unable to submit"}`
+          );
+        }
+      } catch (err) {
+        console.error(err);
+        alert("Submission failed, please try again.");
+      }
     });
-
-    form.reset();
-  } else {
-    // Create an error dialog box with a blue-themed design
-    const errorDialog = document.createElement("div");
-    errorDialog.style.position = "fixed";
-    errorDialog.style.top = "50%";
-    errorDialog.style.left = "50%";
-    errorDialog.style.transform = "translate(-50%, -50%)";
-    errorDialog.style.padding = "20px";
-    errorDialog.style.border = "2px solid #0047ab";
-    errorDialog.style.borderRadius = "10px";
-    errorDialog.style.backgroundColor = "#e6f2ff";
-    errorDialog.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.3)";
-    errorDialog.style.zIndex = "1000";
-    errorDialog.style.textAlign = "center";
-    errorDialog.style.width = "80%";
-    errorDialog.style.maxWidth = "400px";
-
-    errorDialog.innerHTML = `
-      <h3 style="color: #0047ab; margin-bottom: 10px;">Error Sending Message</h3>
-      <p style="font-size: 16px; color: #003366; margin-bottom: 20px;">
-        There was an issue processing your request.<br>
-        <strong>Error:</strong> ${result.error || "Unknown error"}.
-      </p>
-      <button id="closeError" style="
-        padding: 10px 20px; 
-        background-color: #0047ab; 
-        color: #fff; 
-        border: none; 
-        border-radius: 5px; 
-        cursor: pointer;
-        font-size: 14px;
-      ">Close</button>
-    `;
-
-    // Add the error dialog box to the document
-    document.body.appendChild(errorDialog);
-
-    // Add functionality to close the error dialog box
-    const closeButton = document.getElementById("closeError");
-    closeButton.addEventListener("click", () => {
-      document.body.removeChild(errorDialog);
-    });
-  }
-});
   </script>
 </body>
 </html>
