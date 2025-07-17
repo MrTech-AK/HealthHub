@@ -1,0 +1,7 @@
+[functions]
+
+[functions.node_version]
+external_node_modules = [
+    "module-one",
+    "module-two"
+]
