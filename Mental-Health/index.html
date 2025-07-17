@@ -787,115 +787,44 @@ input[type='radio'].active::after {
     height: 232px;
   }
   }
+  .button-container {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  justify-content: center;
+  background: #f9fdfa;
+}
+
+.pdf-button {
+  background-color: #28a745;
+  color: white;
+  padding: 8px 16px;      /* Smaller padding */
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;        /* Smaller font size */
+  transition: background-color 0.3s ease;
+}
+
+.pdf-button:hover {
+  background-color: #218838;
+}
+
 </style>
 
   
     <header class="header">
-     <!-- <div class="container">
-        <div class="content">
-          <div class="logo"><img src="assets/images/logo.svg" alt="" /></div>
-          <h1>Body Mass Index Calculator</h1>
-          <p>
-            Better understand your weight in relation to your height using our
-            body mass index (BM) calculator. While BMI is not the sole
-            determinant of a healthy weight, it offers a valuable starting point
-            to evaluate your overall health and well-being.
-          </p>
-        </div>
-        <div class="calculator">
-          <div class="form" id="form">
-            <h3>Enter your details below</h3>
-            <div class="units">
-              <div class="form-control">
-                <input type="radio" name="input" value="metric" id="metric" class="radio active" checked />
-                <label for="metric">Metric</label>
-              </div>
-              <div class="form-control">
-                <input type="radio" name="input" value="imperial" id="imperial" class="radio" />
-                <label for="imperial">Imperial</label>
-              </div>
-            </div>
-            <div class="infos">
-              <div class="metric">
-                <div class="form-control">
-                  <label for="height">Height</label>
-                  <div class="input-container">
-                    <input type="number" id="height" placeholder="0" />
-                    <span class="unit-height" id="unit-height">cm</span>
-                  </div>
-                </div>
-                <div class="form-control">
-                  <label for="weight">Weight</label>
-                  <div class="input-container">
-                    <input type="number" id="weight" placeholder="0" />
-                    <span class="unit-weight" id="unit-weight">kg</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="imperial">
-                <div class="form-control">
-                  <label for="height">Height</label>
-                  <div class="container-flex">
-                    <div class="input-container">
-                      <input type="number" id="feet" class="feet" placeholder="0">
-                      <small>ft</small>
-                    </div>
-                    <div class="input-container">
-                      <input type="number" id="inch" class="inch" placeholder="0">
-                      <small>in</small>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-control">
-                  <label for="weight">Weight</label>
-                  <div class="container-flex">
-                    <div class="input-container">
-                      <input type="number" id="st" class="st" placeholder="0">
-                      <small>st</small>
-                    </div>
-                    <div class="input-container">
-                      <input type="number" id="lbs" class="lbs" placeholder="0">
-                      <small>lbs</small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-          <div class="container-result" id="container-result">
-            <div class="bmi" id="bmi">
-              <div class="result-heading" id="result-heading">
-                <p>Your BMI is...</p>
-                <div class="result" id="result">23.4</div>
-              </div>
-              <div class="result-text">
-                <p>Your BMI suggests you're <span id="classification"></span>. Your ideal weight is between . <span
-                    id="min-weight"></span> - <span id="max-weight"></span> please Go to Gym</span></p>
-              </div>
-            </div>
-            <div class="welcome-text" id="welcome">
-              <h3>Welcome!</h3>
-              <p>Enter your height and weight and you’ll see your BMI result here</p>
-            </div>
-            </p>
-          </div>
-        </div>
-      </div>
-    </header> -->
+    </header>
     <body>
     <main>
-      <!-- Section explanation -->
-     
+ 
         <div class="content">
           <h2>Your Wellness, Our Mission 🚀</h2>
           <p>
            Health is not just a goal—it's a way of life.
           </p>
         </div>
-      
-      <!-- Section Habits -->
+
       <section class="positive-habits">
         <div>
           <img src="/assets/images/icon-eating.svg" alt="eating" />
@@ -927,7 +856,12 @@ Emotional wellbeing is about understanding, managing, and expressing your feelin
           </div>
         </div>
       </section>
-      <!-- Section Limitations -->
+   
+<div class="button-container">
+  <a href="https://www.hathajoga.lt/asanas-608-yoga-poses.pdf" target="_blank" class="pdf-button">Yoga Plan</a>
+  <a href="ref="https://ncert.nic.in/pdf/publication/otherpublications/tiyhwlups" target="_blank" class="pdf-button">Meditation Plan</a>
+</div>
+
       <section class="limitations">
         <img src="/assets/images/pattern-curved-line-right.svg" alt="curve" class="curve">
         <div class="limitations-content">
@@ -1116,7 +1050,6 @@ function calculateBMI(e) {
   }
 }
 
-// Limit input of height and length
 function limitLength() {
   if (heightEl.value.length > 3 || weightEl.value.length > 3) {
     heightEl.value = heightEl.value.slice(0, 3);
@@ -1129,8 +1062,6 @@ function limitLength() {
     stEl.value = stEl.value.slice(0, 2)
     }
 }
-
-// Add Eventlistener
 form.addEventListener('keydown', (e) => {
   if (
     (e.key === 'Enter' && heightEl.value !== '' && weightEl.value !== '') ||
@@ -1143,8 +1074,6 @@ form.addEventListener('keydown', (e) => {
     calculateBMI();
   }
 });
-
-// Limit input
 heightEl.addEventListener('input', limitLength);
 weightEl.addEventListener('input', limitLength);
 feetEl.addEventListener('input', limitLength)
@@ -1152,7 +1081,6 @@ inchEl.addEventListener('input', limitLength)
 lbsEl.addEventListener('input', limitLength)
 stEl.addEventListener('input', limitLength)
 
-// Change radio button
 const radioButtons = document.querySelectorAll('input[type="radio"]');
 
 radioButtons.forEach((btn) => {
@@ -1172,8 +1100,6 @@ radioButtons.forEach((btn) => {
     }
   });
 });
-
-// Window rezise event
 window.addEventListener('resize', e=> {
   if(window.innerWidth < 768) {
     document.querySelector('.metric').style.display = 'block'
