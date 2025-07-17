@@ -1,97 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Join Our Health Campaign</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback EduVerse</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #1e3c72;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #ffffff;
+      overflow: hidden;
+    }
+
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .contact-form-container {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 30px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      text-align: center;
+    }
+
+    .contact-form-container h2 {
+      margin-bottom: 20px;
+      font-size: 28px;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .contact-form-container input,
+    .contact-form-container textarea,
+    .contact-form-container button {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .contact-form-container input::placeholder,
+    .contact-form-container textarea::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .contact-form-container textarea {
+      resize: none;
+      height: 100px;
+    }
+
+    .contact-form-container button {
+      background: #66d3fa;
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 10px;
+      text-align: center;
+      width: 100%;
+      color: #ffffff;
+      font-size: 14px;
+    }
+
+    footer a {
+      color: #66d3fa;
+      text-decoration: none;
+    }
+  </style>
 </head>
-<body class="bg-blue-50 min-h-screen flex items-center justify-center">
-  <div class="relative w-full max-w-md p-8 bg-white rounded-2xl shadow-lg">
-    <!-- Icon Header -->
-    <div class="flex justify-center mb-6">
-      <svg class="h-16 w-16 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-          d="M12 11c1.657 0 3-1.343 3-3S13.657 5 12 5s-3 1.343-3 3 1.343 3 3 3zM5.516 20.303A8.001 8.001 0 0112 16a8.001 8.001 0 016.484 4.303" />
-      </svg>
-    </div>
-    <h2 class="text-center text-2xl font-semibold text-blue-600 mb-6">Join Our Health Campaign</h2>
+<body>
+  <div id="particles-js"></div>
 
-    <form id="contact-form" class="space-y-4">
-      <!-- Name -->
-      <div class="flex items-center border rounded-lg px-3 py-2 bg-blue-50">
-        <svg class="h-5 w-5 text-blue-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            d="M5.121 19.364a1 1 0 01-.32-1.316 8 8 0 0113.397 0 1 1 0 01-.32 1.316L12 21l-6.879-1.636z.M12 12a5 5 0 100-10 5 5 0 000 10z" />
-        </svg>
-        <input type="text" name="name" placeholder="Full Name" required
-          class="flex-1 bg-transparent outline-none text-blue-700 placeholder-blue-400" />
-      </div>
-
-      <!-- Email -->
-      <div class="flex items-center border rounded-lg px-3 py-2 bg-blue-50">
-        <svg class="h-5 w-5 text-blue-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            d="M16 12h4M8 12H4m8 8a8 8 0 100-16 8 8 0 000 16z" />
-        </svg>
-        <input type="email" name="email" placeholder="Email Address" required
-          class="flex-1 bg-transparent outline-none text-blue-700 placeholder-blue-400" />
-      </div>
-
-      <!-- Age -->
-      <div class="flex items-center border rounded-lg px-3 py-2 bg-blue-50">
-        <svg class="h-5 w-5 text-blue-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            d="M12 4v8h6M12 12H6" />
-        </svg>
-        <input type="number" name="age" placeholder="Age" required
-          class="flex-1 bg-transparent outline-none text-blue-700 placeholder-blue-400" />
-      </div>
-
-      <!-- Location -->
-      <div class="flex items-center border rounded-lg px-3 py-2 bg-blue-50">
-        <svg class="h-5 w-5 text-blue-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            d="M12 11c1.657 0 3-1.343 3-3S13.657 5 12 5s-3 1.343-3 3 1.343 3 3 3zM12 21l-6-6a8 8 0 1112 0l-6 6z" />
-        </svg>
-        <input type="text" name="location" placeholder="City, Country" required
-          class="flex-1 bg-transparent outline-none text-blue-700 placeholder-blue-400" />
-      </div>
-
-      <!-- Interests -->
-      <div class="flex items-center border rounded-lg px-3 py-2 bg-blue-50">
-        <svg class="h-5 w-5 text-blue-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            d="M12 8c-2.21 0-4 .895-4 2s1.79 2 4 2 4-.895 4-2-1.79-2-4-2zM6 20h12" />
-        </svg>
-        <input type="text" name="interests" placeholder="Interests (e.g., Fitness, Yoga)" required
-          class="flex-1 bg-transparent outline-none text-blue-700 placeholder-blue-400" />
-      </div>
-
-      <!-- Message -->
-      <div class="border rounded-lg px-3 py-2 bg-blue-50">
-        <textarea name="message" rows="4" placeholder="Why do you want to join?"
-          class="w-full bg-transparent outline-none text-blue-700 placeholder-blue-400"></textarea>
-      </div>
-
-      <!-- Submit -->
-      <button type="submit"
-        class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 rounded-lg shadow-md">
-        Join Campaign
-      </button>
+  <div class="contact-form-container">
+    <h2>EduVerse ~ FeedBack</h2>
+    <form id="contact-form">
+      <input type="hidden" name="command" value="/start" />
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="text" name="state_country" placeholder="State & Country" required />
+      <input type="text" name="telegram" placeholder="Telegram Username" required />
+      <input type="text" name="phone" placeholder="Rate Us from (5 ⭐)" required />
+      <textarea name="message" placeholder="Your Valuable Feedback" required></textarea>
+      <button type="submit">Send Message</button>
     </form>
   </div>
 
-  <!-- Tailwind + Optional Icons CDN (if needed) -->
-  <!-- <script src="https://unpkg.com/feather-icons"></script> -->
+  <footer>
+    Made with ❤ by <a href="https://t.me/Akki_IzPro" target="_blank">@Akki_IzPro</a>
+  </footer>
+
   <script>
-    const form = document.getElementById("contact-form");
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      // Add your submission logic here
-      alert("Form submitted!");
-      form.reset();
+    /* Particles.js Config */
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 100, density: { enable: true, value_area: 800 } },
+        color: { value: "#ffffff" },
+        shape: { type: "circle" },
+        opacity: { value: 0.4 },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.4, width: 1 },
+        move: { enable: true, speed: 2 },
+      },
+      interactivity: {
+        events: {
+          onhover: { enable: true, mode: "grab" },
+          onclick: { enable: true, mode: "push" },
+        },
+        modes: {
+          grab: { distance: 150, line_linked: { opacity: 0.5 } },
+          push: { particles_nb: 4 },
+        },
+      },
+      retina_detect: true,
     });
+
+    /* Form Submission */
+    const form = document.getElementById("contact-form");
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const formData = {
+    name: form.name.value,
+    state_country: form.state_country.value, 
+    telegram: form.telegram.value,
+    phone: form.phone.value || "Not Provided",
+    message: form.message.value,
+  };
+
+  const response = await fetch("/.netlify/functions/sendMessage", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(formData),
+  });
+
+  const result = await response.json();
+
+  if (response.ok && result.success) {
+    // Create the blue-themed dialog box
+    const dialogBox = document.createElement("div");
+    dialogBox.style.position = "fixed";
+    dialogBox.style.top = "50%";
+    dialogBox.style.left = "50%";
+    dialogBox.style.transform = "translate(-50%, -50%)";
+    dialogBox.style.padding = "20px";
+    dialogBox.style.border = "2px solid #0047ab";
+    dialogBox.style.borderRadius = "10px";
+    dialogBox.style.backgroundColor = "#e6f2ff";
+    dialogBox.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.3)";
+    dialogBox.style.zIndex = "1000";
+    dialogBox.style.textAlign = "center";
+    dialogBox.style.width = "80%";
+    dialogBox.style.maxWidth = "400px";
+
+    dialogBox.innerHTML = `
+      <h3 style="color: #0047ab; margin-bottom: 10px;">Message Sent Successfully!</h3>
+      <p style="font-size: 16px; color: #003366; margin-bottom: 20px;">
+        🎫 <strong>Your Ticket ID:</strong> <span style="color: #0047ab;">${result.ticketID}</span>
+        <br>Thank you for your Feedback!
+      </p>
+      <button id="copyTicket" style="
+        padding: 10px 20px; 
+        background-color: #0047ab; 
+        color: #fff; 
+        border: none; 
+        border-radius: 5px; 
+        cursor: pointer;
+        font-size: 14px;
+      ">Copy Ticket ID</button>
+    `;
+
+    // Add the dialog box to the document
+    document.body.appendChild(dialogBox);
+
+    // Add functionality to copy the ticket ID and close the dialog box
+    const copyButton = document.getElementById("copyTicket");
+    copyButton.addEventListener("click", () => {
+      navigator.clipboard.writeText(result.ticketID).then(() => {
+        document.body.removeChild(dialogBox);
+      });
+    });
+
+    form.reset();
+  } else {
+    // Create an error dialog box with a blue-themed design
+    const errorDialog = document.createElement("div");
+    errorDialog.style.position = "fixed";
+    errorDialog.style.top = "50%";
+    errorDialog.style.left = "50%";
+    errorDialog.style.transform = "translate(-50%, -50%)";
+    errorDialog.style.padding = "20px";
+    errorDialog.style.border = "2px solid #0047ab";
+    errorDialog.style.borderRadius = "10px";
+    errorDialog.style.backgroundColor = "#e6f2ff";
+    errorDialog.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.3)";
+    errorDialog.style.zIndex = "1000";
+    errorDialog.style.textAlign = "center";
+    errorDialog.style.width = "80%";
+    errorDialog.style.maxWidth = "400px";
+
+    errorDialog.innerHTML = `
+      <h3 style="color: #0047ab; margin-bottom: 10px;">Error Sending Message</h3>
+      <p style="font-size: 16px; color: #003366; margin-bottom: 20px;">
+        There was an issue processing your request.<br>
+        <strong>Error:</strong> ${result.error || "Unknown error"}.
+      </p>
+      <button id="closeError" style="
+        padding: 10px 20px; 
+        background-color: #0047ab; 
+        color: #fff; 
+        border: none; 
+        border-radius: 5px; 
+        cursor: pointer;
+        font-size: 14px;
+      ">Close</button>
+    `;
+
+    // Add the error dialog box to the document
+    document.body.appendChild(errorDialog);
+
+    // Add functionality to close the error dialog box
+    const closeButton = document.getElementById("closeError");
+    closeButton.addEventListener("click", () => {
+      document.body.removeChild(errorDialog);
+    });
+  }
+});
   </script>
 </body>
 </html>
