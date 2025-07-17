@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Join Our Health Campaign</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-blue-50 min-h-screen flex items-center justify-center">
+  <div class="relative w-full max-w-md p-8 bg-white rounded-2xl shadow-lg">
+    <!-- Icon Header -->
+    <div class="flex justify-center mb-6">
+      <svg class="h-16 w-16 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+          d="M12 11c1.657 0 3-1.343 3-3S13.657 5 12 5s-3 1.343-3 3 1.343 3 3 3zM5.516 20.303A8.001 8.001 0 0112 16a8.001 8.001 0 016.484 4.303" />
+      </svg>
+    </div>
+    <h2 class="text-center text-2xl font-semibold text-blue-600 mb-6">Join Our Health Campaign</h2>
+
+    <form id="contact-form" class="space-y-4">
+      <!-- Name -->
+      <div class="flex items-center border rounded-lg px-3 py-2 bg-blue-50">
+        <svg class="h-5 w-5 text-blue-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            d="M5.121 19.364a1 1 0 01-.32-1.316 8 8 0 0113.397 0 1 1 0 01-.32 1.316L12 21l-6.879-1.636z.M12 12a5 5 0 100-10 5 5 0 000 10z" />
+        </svg>
+        <input type="text" name="name" placeholder="Full Name" required
+          class="flex-1 bg-transparent outline-none text-blue-700 placeholder-blue-400" />
+      </div>
+
+      <!-- Email -->
+      <div class="flex items-center border rounded-lg px-3 py-2 bg-blue-50">
+        <svg class="h-5 w-5 text-blue-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            d="M16 12h4M8 12H4m8 8a8 8 0 100-16 8 8 0 000 16z" />
+        </svg>
+        <input type="email" name="email" placeholder="Email Address" required
+          class="flex-1 bg-transparent outline-none text-blue-700 placeholder-blue-400" />
+      </div>
+
+      <!-- Age -->
+      <div class="flex items-center border rounded-lg px-3 py-2 bg-blue-50">
+        <svg class="h-5 w-5 text-blue-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            d="M12 4v8h6M12 12H6" />
+        </svg>
+        <input type="number" name="age" placeholder="Age" required
+          class="flex-1 bg-transparent outline-none text-blue-700 placeholder-blue-400" />
+      </div>
+
+      <!-- Location -->
+      <div class="flex items-center border rounded-lg px-3 py-2 bg-blue-50">
+        <svg class="h-5 w-5 text-blue-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            d="M12 11c1.657 0 3-1.343 3-3S13.657 5 12 5s-3 1.343-3 3 1.343 3 3 3zM12 21l-6-6a8 8 0 1112 0l-6 6z" />
+        </svg>
+        <input type="text" name="location" placeholder="City, Country" required
+          class="flex-1 bg-transparent outline-none text-blue-700 placeholder-blue-400" />
+      </div>
+
+      <!-- Interests -->
+      <div class="flex items-center border rounded-lg px-3 py-2 bg-blue-50">
+        <svg class="h-5 w-5 text-blue-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            d="M12 8c-2.21 0-4 .895-4 2s1.79 2 4 2 4-.895 4-2-1.79-2-4-2zM6 20h12" />
+        </svg>
+        <input type="text" name="interests" placeholder="Interests (e.g., Fitness, Yoga)" required
+          class="flex-1 bg-transparent outline-none text-blue-700 placeholder-blue-400" />
+      </div>
+
+      <!-- Message -->
+      <div class="border rounded-lg px-3 py-2 bg-blue-50">
+        <textarea name="message" rows="4" placeholder="Why do you want to join?"
+          class="w-full bg-transparent outline-none text-blue-700 placeholder-blue-400"></textarea>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit"
+        class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 rounded-lg shadow-md">
+        Join Campaign
+      </button>
+    </form>
+  </div>
+
+  <!-- Tailwind + Optional Icons CDN (if needed) -->
+  <!-- <script src="https://unpkg.com/feather-icons"></script> -->
+  <script>
+    const form = document.getElementById("contact-form");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      // Add your submission logic here
+      alert("Form submitted!");
+      form.reset();
+    });
+  </script>
+</body>
+</html>
