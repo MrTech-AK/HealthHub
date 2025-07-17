@@ -1,291 +1,98 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
-    <meta charset="utf-8"/><title>HealthHub</title>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.linkcents.com/css/aos.css"/><br><link rel="stylesheet" href="https://cdn.linkcents.com/css/owl.theme.green.min.css"/><br><link rel="stylesheet" href="https://cdn.linkcents.com/css/owl.carousel.min.css"/><br><link rel="stylesheet" href="https://cdn.linkcents.com/css/style.css"/>    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-    <style>
-        /* Navbar Styling */
-        header {
-            padding: 1rem 1.5rem;
-            height: 70px;
-        }
-
-        /* Dropdown Menu */
-        .dropdown-menu {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease, opacity 0.4s ease;
-            opacity: 0;
-        }
-
-        .dropdown-menu.show {
-            max-height: 500px; /* Adjust based on content */
-            opacity: 1;
-        }
-
-        /* Mobile Button Animation */
-        #menu-button .icon {
-            transition: transform 0.4s ease;
-        }
-
-        #menu-button.open .icon {
-            transform: rotate(90deg);
-        }
-    </style>
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
-
-<!-- Custom Blue-White Theme -->
-<style>
-  :root {
-    --primary-blue: #007BFF;
-    --light-blue: #E6F0FF;
-    --dark-blue: #0056b3;
-    --gray-text: #6c757d;
-    --white: #ffffff;
-  }
-
-  body {
-    font-family: 'Lato', sans-serif;
-    background-color: var(--white);
-    color: #333;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    color: var(--primary-blue);
-    font-weight: 700;
-  }
-
-  a {
-    color: var(--primary-blue);
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-
-  a:hover {
-    color: var(--dark-blue);
-  }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem;
-  }
-
-  /* Navbar */
-  header {
-    background-color: var(--primary-blue);
-    color: var(--white);
-    padding: 1rem 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  }
-
-  header .logo {
-    font-size: 1.5rem;
-    font-weight: 900;
-  }
-
-  .nav-links a {
-    color: var(--white);
-    margin-left: 1rem;
-    font-weight: 400;
-  }
-
-  .nav-links a:hover {
-    text-decoration: underline;
-  }
-
-  /* Section Wrapper */
-  section {
-    padding: 3rem 1rem;
-    background-color: var(--light-blue);
-  }
-
-  /* Cards / Info Boxes */
-  .card {
-    background: var(--white);
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-    transition: transform 0.2s ease;
-  }
-
-  .card:hover {
-    transform: translateY(-5px);
-  }
-
-  .card-icon {
-    font-size: 2rem;
-    color: var(--primary-blue);
-    margin-right: 1rem;
-  }
-
-  .card-content {
-    display: flex;
-    align-items: center;
-  }
-
-  /* Footer */
-  footer {
-    background: var(--dark-blue);
-    color: var(--white);
-    padding: 1.5rem 1rem;
-    text-align: center;
-  }
-
-  /* Responsive */
-  @media (max-width: 768px) {
-    .nav-links {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .card-content {
-      flex-direction: column;
-      text-align: center;
-    }
-
-    .card-icon {
-      margin-bottom: 0.5rem;
-    }
-  }
-</style>
-
-
-    <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HealthHub - Credits & Verification</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome CDN -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    rel="stylesheet"
+  />
 </head>
+<body class="bg-white text-gray-800 font-sans">
 
-<body class="home">
-
-    <script>
-        const menuBtn = document.getElementById('menu-button');
-        const menu = document.getElementById('dropdown-menu');
-
-        menuBtn.addEventListener('click', function () {
-            menu.classList.toggle('show');
-            this.classList.toggle('open');
-        });
-    </script>
-
-    <meta charset="utf-8"/><title>Health Hub</title>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<div class="main-wrapper overflow-hidden" >
-
-    <section class="pb-6 pb-md-13 pb-lg-10 pt-13 pt-md-8 pt-lg-12">
-            <div class="container-fluid max-width-lg">
-                <div class="row align-items-center justify-content-between">
-    <div class="mb-4 mb-lg-0">
-        <h2 class="fs-9 mb-4 pb-2">Credits & Verification</h2>
-        <p class="mb-4 pb-2 text-muted">
-            All content provided on this website is carefully researched, fact-checked, and verified through credible sources to ensure accuracy and trust.
-        </p>
-
-        <ul class="list-unstyled mb-4 pb-1">
-            <li class="mb-3">
-                <div class="d-flex align-items-center">
-                    <span>
-                        <i class="bg-light-info rounded-circle p-2 me-3 fas fa-check text-success fs-1"></i>
-                    </span>
-                    <span><strong>PDF Source:</strong> Google, NCERT and WHO site</span>
-                </div>
-            </li>
-            <li class="mb-3">
-                <div class="d-flex align-items-center">
-                    <span>
-                        <i class="bg-light-info rounded-circle p-2 me-3 fas fa-check text-success fs-1"></i>
-                    </span>
-                    <span><strong>Information Source:</strong> WHO Website, AIIMS Website</span>
-                </div>
-            </li>
-            <li class="mb-3">
-                <div class="d-flex align-items-center">
-                    <span>
-                        <i class="bg-light-info rounded-circle p-2 me-3 fas fa-check text-success fs-1"></i>
-                    </span>
-                    <span><strong>Image Source:</strong> Google and 3rd Party Sites (used under fair use or open-license)</span>
-                </div>
-            </li>
-            <li class="mb-3">
-                <div class="d-flex align-items-center">
-                    <span>
-                        <i class="bg-light-info rounded-circle p-2 me-3 fas fa-check text-success fs-1"></i>
-                    </span>
-                    <span><strong>VS CODE:</strong> All Files were coded on Vs Code First</span>
-                </div>
-            </li>
-            <li class="mb-3">
-                <div class="d-flex align-items-center">
-                    <span>
-                        <i class="bg-light-info rounded-circle p-2 me-3 fas fa-check text-success fs-1"></i>
-                    </span>
-                    <span><strong>Github:</strong> After coding all files were put up in Github Repository for Deployment Process</span>
-                </div>
-            </li>
-            <li class="mb-3">
-                <div class="d-flex align-items-center">
-                    <span>
-                        <i class="bg-light-info rounded-circle p-2 me-3 fas fa-check text-success fs-1"></i>
-                    </span>
-                    <span><strong>Netlify:</strong> IT was used for Deployment of This Website</span>
-                </div>
-            </li>
-            <li class="mb-3">
-                <div class="d-flex align-items-center">
-                    <span>
-                        <i class="bg-light-info rounded-circle p-2 me-3 fas fa-check text-success fs-1"></i>
-                    </span>
-                    <span><strong>To-Do List:</strong> Our Old Project</span>
-                </div>
-            </li>
-        </ul>
+  <!-- Header -->
+  <header class="bg-blue-600 text-white shadow-md">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="text-2xl font-extrabold tracking-tight">HealthHub</div>
+      <nav class="space-x-6 hidden md:flex">
+        <a href="#" class="hover:underline hover:text-blue-300 transition">Home</a>
+        <a href="#" class="hover:underline hover:text-blue-300 transition">About</a>
+        <a href="#" class="hover:underline hover:text-blue-300 transition">Contact</a>
+      </nav>
+      <!-- Mobile menu button placeholder if needed -->
     </div>
-                </div>
-                    </div> 
+  </header>
 
-                </div>
-    
-            </div>
-        </section> 
+  <!-- Main Content -->
+  <main class="max-w-5xl mx-auto px-6 py-16">
+    <section class="mb-12">
+      <h1 class="text-4xl font-bold text-blue-700 mb-6">Credits & Verification</h1>
+      <p class="text-gray-600 mb-10 max-w-3xl leading-relaxed">
+        All content provided on this website is carefully researched, fact-checked, and verified through credible sources to ensure accuracy and trust.
+      </p>
 
+      <ul class="space-y-6">
+        <!-- List Item -->
+        <li class="flex items-start space-x-4 bg-blue-50 rounded-lg p-5 shadow-sm hover:shadow-md transition">
+          <i class="fas fa-check-circle text-blue-600 text-3xl flex-shrink-0 mt-1"></i>
+          <p class="text-gray-900 text-lg font-semibold">
+            <span class="font-bold">PDF Source:</span> Google, NCERT, and WHO site
+          </p>
+        </li>
 
-<style>
-  .payment-img {
-    width: 140px;
-    display: block;
-    margin: 0 auto;
-  }
+        <li class="flex items-start space-x-4 bg-blue-50 rounded-lg p-5 shadow-sm hover:shadow-md transition">
+          <i class="fas fa-check-circle text-blue-600 text-3xl flex-shrink-0 mt-1"></i>
+          <p class="text-gray-900 text-lg font-semibold">
+            <span class="font-bold">Information Source:</span> WHO Website, AIIMS Website
+          </p>
+        </li>
 
-  @media (max-width: 767px) {
-    .company-icon {
-      flex-direction: column !important;
-      align-items: center;
-    }
-  }
-</style>
+        <li class="flex items-start space-x-4 bg-blue-50 rounded-lg p-5 shadow-sm hover:shadow-md transition">
+          <i class="fas fa-check-circle text-blue-600 text-3xl flex-shrink-0 mt-1"></i>
+          <p class="text-gray-900 text-lg font-semibold">
+            <span class="font-bold">Image Source:</span> Google and 3rd Party Sites (used under fair use or open-license)
+          </p>
+        </li>
 
-    
+        <li class="flex items-start space-x-4 bg-blue-50 rounded-lg p-5 shadow-sm hover:shadow-md transition">
+          <i class="fas fa-check-circle text-blue-600 text-3xl flex-shrink-0 mt-1"></i>
+          <p class="text-gray-900 text-lg font-semibold">
+            <span class="font-bold">VS Code:</span> All files were coded in Visual Studio Code
+          </p>
+        </li>
 
-         
+        <li class="flex items-start space-x-4 bg-blue-50 rounded-lg p-5 shadow-sm hover:shadow-md transition">
+          <i class="fas fa-check-circle text-blue-600 text-3xl flex-shrink-0 mt-1"></i>
+          <p class="text-gray-900 text-lg font-semibold">
+            <span class="font-bold">GitHub:</span> Files were pushed to a GitHub repository for deployment
+          </p>
+        </li>
+
+        <li class="flex items-start space-x-4 bg-blue-50 rounded-lg p-5 shadow-sm hover:shadow-md transition">
+          <i class="fas fa-check-circle text-blue-600 text-3xl flex-shrink-0 mt-1"></i>
+          <p class="text-gray-900 text-lg font-semibold">
+            <span class="font-bold">Netlify:</span> Used for deploying this website
+          </p>
+        </li>
+
+        <li class="flex items-start space-x-4 bg-blue-50 rounded-lg p-5 shadow-sm hover:shadow-md transition">
+          <i class="fas fa-check-circle text-blue-600 text-3xl flex-shrink-0 mt-1"></i>
+          <p class="text-gray-900 text-lg font-semibold">
+            <span class="font-bold">To-Do List:</span> A previous project reused in this platform
+          </p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-blue-700 text-white text-center py-6 mt-16">
+    &copy; 2025 HealthHub. All rights reserved.
+  </footer>
 
 </body>
-
-</html>
-</body>
-
 </html>
