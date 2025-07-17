@@ -37,6 +37,133 @@
             transform: rotate(90deg);
         }
     </style>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+
+<!-- Custom Blue-White Theme -->
+<style>
+  :root {
+    --primary-blue: #007BFF;
+    --light-blue: #E6F0FF;
+    --dark-blue: #0056b3;
+    --gray-text: #6c757d;
+    --white: #ffffff;
+  }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background-color: var(--white);
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--primary-blue);
+    font-weight: 700;
+  }
+
+  a {
+    color: var(--primary-blue);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  a:hover {
+    color: var(--dark-blue);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+
+  /* Navbar */
+  header {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+
+  header .logo {
+    font-size: 1.5rem;
+    font-weight: 900;
+  }
+
+  .nav-links a {
+    color: var(--white);
+    margin-left: 1rem;
+    font-weight: 400;
+  }
+
+  .nav-links a:hover {
+    text-decoration: underline;
+  }
+
+  /* Section Wrapper */
+  section {
+    padding: 3rem 1rem;
+    background-color: var(--light-blue);
+  }
+
+  /* Cards / Info Boxes */
+  .card {
+    background: var(--white);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+  }
+
+  .card-icon {
+    font-size: 2rem;
+    color: var(--primary-blue);
+    margin-right: 1rem;
+  }
+
+  .card-content {
+    display: flex;
+    align-items: center;
+  }
+
+  /* Footer */
+  footer {
+    background: var(--dark-blue);
+    color: var(--white);
+    padding: 1.5rem 1rem;
+    text-align: center;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .card-content {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .card-icon {
+      margin-bottom: 0.5rem;
+    }
+  }
+</style>
+
 
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
